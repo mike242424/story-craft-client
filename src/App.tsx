@@ -5,7 +5,6 @@ import StoryDetails from "./pages/StoryDetails"
 import NotFound from "./components/NotFound"
 
 const App = () => {
-
   return (
     <>  
     <BrowserRouter>
