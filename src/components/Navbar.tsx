@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   const handleNewStory = () => {
-    axios.post("http://localhost:3000/stories", {
+    axios.post(import.meta.env.VITE_BASE_URL + "/stories", {
       title: title,
       text: text,
     });

@@ -12,7 +12,7 @@ const StoryList = () => {
 
   useEffect(() => {
     axios
-      .get<Story[]>("http://localhost:3000/stories")
+      .get<Story[]>(import.meta.env.VITE_BASE_URL  + "stories")
       .then((res: { data: Story[] }) => {
         setStories(res.data.reverse());
         setLoading(false);

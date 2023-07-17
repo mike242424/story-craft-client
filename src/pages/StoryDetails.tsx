@@ -20,7 +20,7 @@ const StoryDetails = () => {
 
   const handleDelete = (id: number): void => {
     axios
-      .delete(`http://localhost:3000/stories/${id}`)
+      .delete(import.meta.env.VITE_BASE_URL + `stories/${id}`)
       .then(() => {
         console.log("removed");
       })
@@ -33,7 +33,7 @@ const StoryDetails = () => {
 
   const handleAdd = (id: number) => {
     axios
-      .patch(`http://localhost:3000/stories/${id}`, {
+      .patch(import.meta.env.VITE_BASE_URL + `stories/${id}`, {
         text: text,
       })
       .then(() => {
