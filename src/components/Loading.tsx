@@ -7,7 +7,7 @@ const Loading = () => {
       display="flex"
       justifyContent="center"
       height="100vh"
-      sx={{marginTop: "50px"}}
+      sx={{marginTop: "60px"}}
     >
       <CircularProgress size={140} color="secondary" />
     </Box>
