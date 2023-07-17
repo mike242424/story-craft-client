@@ -5,11 +5,11 @@ const Loading = () => {
   return (
     <Box
       display="flex"
-      alignItems="center"
       justifyContent="center"
       height="100vh"
+      sx={{marginTop: "50px"}}
     >
-      <CircularProgress size={100} color="secondary" />
+      <CircularProgress size={140} color="secondary" />
     </Box>
   );
 };
