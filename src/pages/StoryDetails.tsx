@@ -20,7 +20,7 @@ const StoryDetails = () => {
 
   const handleDelete = (id: number): void => {
     axios
-      .delete(import.meta.env.VITE_BASE_URL + `stories/${id}`)
+      .delete(`https://story-craft-server.onrender.com/stories/${id}`)
       .then(() => {
         console.log("removed");
       })
@@ -33,7 +33,7 @@ const StoryDetails = () => {
 
   const handleAdd = (id: number) => {
     axios
-      .patch(import.meta.env.VITE_BASE_URL + `stories/${id}`, {
+      .patch(`https://story-craft-server.onrender.com/stories/${id}`, {
         text: text,
       })
       .then(() => {

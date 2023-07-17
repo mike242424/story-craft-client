@@ -12,7 +12,7 @@ const StoryList = () => {
 
   useEffect(() => {
     axios
-      .get<Story[]>(import.meta.env.VITE_BASE_URL  + "stories")
+      .get<Story[]>("https://story-craft-server.onrender.com/stories")
       .then((res: { data: Story[] }) => {
         setStories(res.data.reverse());
         setLoading(false);

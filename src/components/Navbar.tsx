@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   const handleNewStory = () => {
-    axios.post(import.meta.env.VITE_BASE_URL + "/stories", {
+    axios.post("https://story-craft-server.onrender.com/stories", {
       title: title,
       text: text,
     });
