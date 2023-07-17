@@ -3,7 +3,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 const Loading = () => {
   return (
     <>
-      <CircularProgress />
+      <CircularProgress size={60} color="secondary"/>
     </>
   );
 };
