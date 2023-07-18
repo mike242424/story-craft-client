@@ -9,42 +9,50 @@ import {
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
+import { Story } from "../interfaces/Story";
 
 const StoryDetails = () => {
-  const location = useLocation();
-  const story = location.state?.story;
-  const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
   const [text, setText] = useState("");
+  const [stories, setStories] = useState<Story[]>([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const story = location.state?.story;
   const MAX_WORD_LIMIT = 250;
 
   const handleDelete = (id: number): void => {
     axios
       .delete(`https://story-craft-server.onrender.com/stories/${id}`)
       .then(() => {
-        console.log("removed");
+        setStories((prevStories) =>
+          prevStories.filter((story) => story.id !== id)
+        );
+
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
-    navigate("/");
-    window.location.reload();
   };
 
-  const handleAdd = (id: number) => {
+  const handleAdd = (id: number): void => {
     axios
       .patch(`https://story-craft-server.onrender.com/stories/${id}`, {
         text: text,
       })
-      .then(() => {
-        console.log("added");
+      .then((res) => {
+        const updatedStory = res.data;
+        setStories((prevStories) =>
+          prevStories.map((story) =>
+            story.id === updatedStory.id ? updatedStory : story
+          )
+        );
+        setOpenDrawer(false);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
-    navigate("/");
-    window.location.reload();
-    setOpenDrawer(false);
   };
 
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {

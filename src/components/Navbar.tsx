@@ -8,11 +8,13 @@ import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Drawer, TextField } from "@mui/material";
 import axios from "axios";
+import { Story } from "../interfaces/Story";
 
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [stories, setStories] = useState<Story[]>([]);
   const MAX_WORD_LIMIT = 250;
 
   const navigate = useNavigate();
@@ -22,12 +24,22 @@ const Navbar = () => {
   };
 
   const handleNewStory = () => {
-    axios.post("https://story-craft-server.onrender.com/stories", {
-      title: title,
-      text: text,
-    });
-    navigate("/");
-    window.location.reload();
+    axios
+      .post("https://story-craft-server.onrender.com/stories/", {
+        title: title,
+        text: text,
+      })
+      .then((res) => {
+        const newStory = res.data;
+        setStories((prevStories) => [newStory, ...prevStories]);
+        setTitle("");
+        setText("");
+        navigate("/");
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
