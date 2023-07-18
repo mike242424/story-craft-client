@@ -14,7 +14,7 @@ import { Story } from "../interfaces/Story";
 const StoryDetails = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [text, setText] = useState("");
-  const [stories, setStories] = useState<Story[]>([]);
+  const [_, setStories] = useState<Story[]>([]);
   const location = useLocation();
   const navigate = useNavigate();
   const story = location.state?.story;

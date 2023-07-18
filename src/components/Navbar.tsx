@@ -14,7 +14,7 @@ const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [stories, setStories] = useState<Story[]>([]);
+  const [_, setStories] = useState<Story[]>([]);
   const MAX_WORD_LIMIT = 250;
 
   const navigate = useNavigate();
