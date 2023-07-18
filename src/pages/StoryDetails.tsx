@@ -10,6 +10,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 import { Story } from "../interfaces/Story";
+import NotFound from "../components/NotFound";
 
 const StoryDetails = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -66,18 +67,19 @@ const StoryDetails = () => {
 
   if (!story || !story.title) {
     return (
-      <Paper
-        square
-        elevation={8}
-        sx={{ textAlign: "center", margin: "50px", padding: "20px" }}
-      >
-        <Typography variant="h4" component="h3">
-          Story Not Found
-        </Typography>
-        <Typography variant="body1" component="p">
-          The requested story does not exist or has missing properties.
-        </Typography>
-      </Paper>
+      // <Paper
+      //   square
+      //   elevation={8}
+      //   sx={{ textAlign: "center", margin: "50px", padding: "20px" }}
+      // >
+      //   <Typography variant="h4" component="h3">
+      //     Story Not Found
+      //   </Typography>
+      //   <Typography variant="body1" component="p">
+      //     The requested story does not exist or has missing properties.
+      //   </Typography>
+      // </Paper>
+      <NotFound />
     );
   }
 
