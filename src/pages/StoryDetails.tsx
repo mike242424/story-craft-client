@@ -66,21 +66,7 @@ const StoryDetails = () => {
   };
 
   if (!story || !story.title) {
-    return (
-      // <Paper
-      //   square
-      //   elevation={8}
-      //   sx={{ textAlign: "center", margin: "50px", padding: "20px" }}
-      // >
-      //   <Typography variant="h4" component="h3">
-      //     Story Not Found
-      //   </Typography>
-      //   <Typography variant="body1" component="p">
-      //     The requested story does not exist or has missing properties.
-      //   </Typography>
-      // </Paper>
-      <NotFound />
-    );
+    return <NotFound />;
   }
 
   return (
@@ -138,7 +124,6 @@ const StoryDetails = () => {
             variant="outlined"
             fullWidth
             margin="normal"
-            inputProps={{ maxLength: 500 }}
             sx={{
               "& .MuiInputLabel-root.Mui-focused": {
                 color: (theme) => theme.palette.secondary.main,
@@ -154,7 +139,9 @@ const StoryDetails = () => {
             component="p"
             sx={{ textAlign: "right", color: "text.secondary" }}
           >
-            {`${text.trim().split(/\s+/).length}/${MAX_WORD_LIMIT} words`}
+            {`${
+              text.trim() === "" ? 0 : text.trim().split(/\s+/).length
+            }/${MAX_WORD_LIMIT} words`}{" "}
           </Typography>
           <Button
             variant="contained"

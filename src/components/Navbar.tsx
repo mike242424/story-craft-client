@@ -42,11 +42,11 @@ const Navbar = () => {
       });
   };
 
-  const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputText = e.target.value;
-    const wordCount = inputText.trim().split(/\s+/).length;
+    const words = inputText.trim().split(/\s+/);
 
-    if (wordCount <= MAX_WORD_LIMIT) {
+    if (words.length <= MAX_WORD_LIMIT) {
       setText(inputText);
     }
   };
@@ -125,7 +125,9 @@ const Navbar = () => {
             component="p"
             sx={{ textAlign: "right", color: "text.secondary" }}
           >
-            {`${text.trim().split(/\s+/).length}/${MAX_WORD_LIMIT} words`}
+            {`${
+              text.trim() === "" ? 0 : text.trim().split(/\s+/).length
+            }/${MAX_WORD_LIMIT} words`}
           </Typography>
           <Button
             variant="contained"
